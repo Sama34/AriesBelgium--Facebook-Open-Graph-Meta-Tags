@@ -1,0 +1,8 @@
+1.0
+===
+ - Initial release
+ 
+1.1
+===
+ - BUGFIX: quotes break og:-tags
+ - LANGFIX: typo

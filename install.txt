@@ -1,0 +1,26 @@
+INSTALL
+=======
+1) Copy the both the fbmeta folder AND the fbmeta.php file from the zip into /path/to/mybb/inc/plugins/
+2) Go to AdminCP > Configuration > Plugins and Install & Activate the "Facebook Open Graph Meta Tags" plugin
+3) In AdminCP > Configuration > Settings > Facebook Open Graph Meta Tags, adjust the settings
+------ You are required to give in at least one admin account or appid.
+
+UPGRADING
+=========
+1) Unactivate the 'Facebook Open Graph Meta Tags' plugin
+2) Copy the new files to the /path/to/mybb/inc/plugins/ folder
+3) Activate the plugin again
+4) Check for new settings in AdminCP > Configuration > Settings > Facebook Open Graph Meta Tags
+
+UNINSTALL
+=========
+1) Go to AdminCP > Configuration > Plugins and Uninstall the "Facebook Open Graph Meta Tags" plugin
+2) Remove the following files and folders
+ - /path/to/mybb/inc/plugins/fbmeta (folder)
+ - /path/to/mybb/inc/plugins/fbmeta.php
+ 
+TRANSLATIONS
+============
+If you like to translate this plugin to your language, copy the 'english' folder in /path/to/mybb/inc/plugins/fbmeta/lang/
+and rename it to the language string used by MyBB for your language. Translate all the *.lang.php file in that folder. If
+you would like to distribute your translation, please do not include the actuall plugin file but only your translation.
