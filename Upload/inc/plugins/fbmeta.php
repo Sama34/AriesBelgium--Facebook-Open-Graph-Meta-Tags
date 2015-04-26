@@ -31,12 +31,12 @@ function fbmeta_info()
 	return array(
 		"name"			=> $lang->fbmeta,
 		"description"	=> $donate_button.$lang->fbmeta_description,
-		"website"		=> "",
+		"website"		=> "http://mods.mybb.com/view/facebook-open-graph-meta-tags",
 		"author"		=> "Aries-Belgium",
 		"authorsite"	=> "http://community.mybb.com/user-3840.html",
 		"version"		=> "1.1",
-		"guid" 			=> "9ba1f4b99c389cc43a1886408eaa3acc",
-		"compatibility" => "14*,16*"
+		'codename'		=> 'ougc_fbmeta',
+		"compatibility" => "18*"
 	);
 }
 
@@ -84,7 +84,7 @@ function fbmeta_settings()
 {
 	global $db, $mybb, $lang;
 	
-	fbmeta__lang_load("",true);
+	fbmeta__lang_load();
 	
 	$settings_group = array(
 		"name" => "fbmeta",
@@ -755,49 +755,9 @@ function fbmeta_profile()
 /**
  * Helper function to load language files for the plugin
  */
-function fbmeta__lang_load($file="", $supress_error=false)
+function fbmeta__lang_load()
 {
 	global $lang;
-	
-	$plugin_name = str_replace('__lang_load', '', __FUNCTION__);
-	$plugin_lang_dir = MYBB_ROOT."inc/plugins/{$plugin_name}/lang/";
-	if(empty($file)) $file = $plugin_name;
-	
-	$langparts = explode("/", $lang->language, 2);
-	$language = $langparts[0];
-	if(isset($langparts[1]))
-	{
-		$dir = "/".$langparts[1];
-	}
-	else
-	{
-		$dir = "";
-	}
-	
-	if(file_exists($plugin_lang_dir.$language.$dir."/{$file}.lang.php"))
-	{
-		require_once $plugin_lang_dir.$language.$dir."/{$file}.lang.php";
-	}
-	elseif(file_exists($plugin_lang_dir."english".$dir."/{$file}.lang.php"))
-	{
-		require_once $plugin_lang_dir."english".$dir."/{$file}.lang.php";
-	}
-	else
-	{
-		if($supress_error != true)
-		{
-			die($plugin_lang_dir."english".$dir."/{$file}.lang.php");
-		}
-	}
-	
-	if(is_array($l))
-	{
-		foreach($l as $key => $val)
-		{
-			if(empty($lang->$key) || $lang->$key != $val)
-			{
-				$lang->$key = $val;
-			}
-		}
-	}
+
+	isset($lang->fbmeta) or $lang->load('fbmeta');
 }
